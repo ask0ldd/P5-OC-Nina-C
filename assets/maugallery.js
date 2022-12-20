@@ -67,7 +67,7 @@
     $(".gallery").on("click", ".mg-prev", () =>
       $.fn.mauGallery.methods.prevImage(options.lightboxId)
     );
-    
+
     $(".gallery").on("click", ".mg-next", () =>
       $.fn.mauGallery.methods.nextImage(options.lightboxId)
     );
@@ -274,11 +274,11 @@
         if (tag === "all") {
           $(this)
             .parents(".item-column")
-            .show(); // error : delai .show(300)
+            .show(300); // error : delai .show(300)
         } else if ($(this).data("gallery-tag") === tag) {
           $(this)
             .parents(".item-column")
-            .show(); // error : delai .show(300)
+            .show(300); // error : delai .show(300)
         }
       });
     }
