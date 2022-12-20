@@ -52,7 +52,8 @@
     navigation: true
   };
 
-  $.fn.mauGallery.listeners = function(options) { // LISTENERS
+  $.fn.mauGallery.listeners = function(options) // LISTENERS
+  { 
     $(".gallery-item").on("click", function() { // Click image
       if (options.lightBox && $(this).prop("tagName") === "IMG") { // Si lightbox valide & element cliqué = img
         $.fn.mauGallery.methods.openLightBox($(this), options.lightboxId); // openlightbox(img, options)
@@ -61,14 +62,18 @@
       }
     });
 
-    $(".gallery").on("click", ".nav-link", $.fn.mauGallery.methods.filterByTag);
+    $(".gallery").on("click", ".nav-link", $.fn.mauGallery.methods.filterByTag); // Filter click
+
     $(".gallery").on("click", ".mg-prev", () =>
       $.fn.mauGallery.methods.prevImage(options.lightboxId)
     );
+    
     $(".gallery").on("click", ".mg-next", () =>
       $.fn.mauGallery.methods.nextImage(options.lightboxId)
     );
+
   };
+
   $.fn.mauGallery.methods = {
     createRowWrapper(element) {
       if (
@@ -139,7 +144,7 @@
         }
       });
       let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
-      let imagesCollection = [];
+      let imagesCollection = []; // filtered list of imgs
       if (activeTag === "all") {
         $(".item-column").each(function() {
           if ($(this).children("img").length) {
@@ -166,7 +171,7 @@
         }
       });
       next =
-        imagesCollection[index - 1] || //error
+        imagesCollection[index - 1] || // error : -1 was missing
         imagesCollection[imagesCollection.length - 1];
       $(".lightboxImage").attr("src", $(next).attr("src"));
     },
@@ -180,7 +185,7 @@
         }
       });
       let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
-      let imagesCollection = [];
+      let imagesCollection = []; // filtered list of imgs
       if (activeTag === "all") {
         $(".item-column").each(function() {
           if ($(this).children("img").length) {
@@ -206,11 +211,11 @@
           index = i;
         }
       });
-      next = imagesCollection[index + 1] || imagesCollection[0]; //error
+      next = imagesCollection[index + 1] || imagesCollection[0]; // error : +1 was missing
       $(".lightboxImage").attr("src", $(next).attr("src"));
     },
 
-    //modifier alt avec image
+    // modifier alt avec image
     createLightBox(gallery, lightboxId, navigation) {
       gallery.append(`<div class="modal fade" id="${
         lightboxId ? lightboxId : "galleryLightbox"
@@ -237,28 +242,28 @@
 
     showItemTags(gallery, position, tags) {
       var tagItems =
-        '<li class="nav-item"><span class="nav-link active active-tag"  data-images-toggle="all">Tous</span></li>';
+        '<li class="nav-item"><span class="nav-link active active-tag" data-images-toggle="all">Tous</span></li>'; // "tous" filter
       $.each(tags, function(index, value) {
         tagItems += `<li class="nav-item active">
-                <span class="nav-link"  data-images-toggle="${value}">${value}</span></li>`;
+                <span class="nav-link"  data-images-toggle="${value}">${value}</span></li>`; // gallery filters extracts from <img data-gallery-tag="Concert" 
       });
-      var tagsRow = `<ul class="my-4 tags-bar nav nav-pills">${tagItems}</ul>`;
+      var tagsRow = `<ul class="my-4 tags-bar nav nav-pills">${tagItems}</ul>`; // filters container
 
       if (position === "bottom") {
         gallery.append(tagsRow);
       } else if (position === "top") {
-        gallery.prepend(tagsRow);
+        gallery.prepend(tagsRow); // Insert avant tag gallery
       } else {
         console.error(`Unknown tags position: ${position}`);
       }
     },
 
     filterByTag() {
-      if ($(this).hasClass("active-tag")) {
+      if ($(this).hasClass("active-tag")) { // si click active filter
         return;
       }
       $(".active-tag").removeClass("active active-tag");
-      $(this).addClass("active-tag");
+      $(this).addClass("active active-tag"); // error : active was missing
 
       var tag = $(this).data("images-toggle");
 
@@ -269,11 +274,11 @@
         if (tag === "all") {
           $(this)
             .parents(".item-column")
-            .show(300);
+            .show(); // error : delai .show(300)
         } else if ($(this).data("gallery-tag") === tag) {
           $(this)
             .parents(".item-column")
-            .show(300);
+            .show(); // error : delai .show(300)
         }
       });
     }
