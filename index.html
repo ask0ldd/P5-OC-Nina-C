@@ -2,14 +2,13 @@
 <html lang="fr"><!-- access lang--> <!--  itemscope itemtype="http://schema.org/ProfessionalService" -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css"> <!-- min -->
+	<link rel="stylesheet" href="./assets/mins/bootstrap-whitelisted.min.css" defer> <!-- min -->
 	<link rel="stylesheet" href="./assets/style.css"> <!-- compress -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap" rel="stylesheet">
 	<meta charset="UTF-8">
-	<!--SEO adds-->
-	<!-- Place this data between the <head> tags of your website -->
+	<!--SEO ADD-->
 	<title>Nina Carducci - Photographe professionnel sur Bordeaux</title> <!-- access title best redact-->
 	<meta name="description" content="Nina Carducci. Photographe professionnel sur Bordeaux. Disponible pour mariages, portraits, entreprises, retouches photos, albums..." >
 	<!-- Twitter Card data -->
@@ -18,7 +17,7 @@
 	<meta name="twitter:title" content="Nina Carducci - Photographe professionnel sur Bordeaux">
 	<meta name="twitter:description" content="Nina Carducci. Photographe professionnel sur Bordeaux. Disponible pour mariages, portraits, entreprises, retouches photos, albums...">
 	<meta name="twitter:creator" content="@author_handle">
-	<!-- Twitter summary card with large image must be at least 280x150px -->
+	<!-- Must be at least 280x150px -->
 	<meta name="twitter:image:src" content="https://ask0ldd.github.io/P5-OC-Nina-C/assets/images/nina.webp">
 	<!-- Open Graph data -->
 	<meta property="og:title" content="Nina Carducci - Photographe professionnel sur Bordeaux" >
@@ -29,7 +28,7 @@
 	<meta property="og:image" content="https://ask0ldd.github.io/P5-OC-Nina-C/assets/images/nina.webp" >
 	<meta property="og:description" content="Photographe professionnel sur Bordeaux, spécialiste de la photographie pour mariages, portraits, entreprises, retouches photos, albums..." >
 	<meta property="og:site_name" content="Nina Carducci - Photographe professionnel sur Bordeaux" >
-
+	<!-- Rich Snippets -->
 	<script type="application/ld+json">
 		{
 		  "@context": "https://schema.org",
@@ -119,7 +118,7 @@
 		</section>
 		<section id="about"> <!--seo div > section -->
 			<figure class="picture left"> <!--access div > figure-->
-				<img src="./assets/images/nina.webp" alt="portrait de nina carducci, photographe"> <!--access alt-->
+				<img srcset="./assets/images/nina-430.webp 430w, ./assets/images/nina-550.webp 550w" sizes="(max-width: 600px) 430px, 550px" src="./assets/images/nina-550.webp" alt="portrait de nina carducci, photographe"> <!--access alt-->
 			</figure>
 			<div id="about-me">
 				<h2 class="about-me__title">A propos de moi</h2><!-- h3 > h2 -->
@@ -131,7 +130,7 @@
 		<section id="gallery"> <!--seo div > section -->
 			<h2 class="title">Portfolio</h2><!-- h3 > h2 -->
 			<div class="container py-3">
-				<div class="gallery" style="display: none">
+				<div class="gallery" style="display: block">
 					<img data-gallery-tag="Concert" class="gallery-item" src="./assets/images/gallery/concerts/aaron-paul-wnX-fXzB6Cw-unsplash.webp" alt="photographie d'un concert"> <!--access alt renommer files-->
 					<img data-gallery-tag="Entreprises" class="gallery-item" src="./assets/images/gallery/entreprise/ali-morshedlou-WMD64tMfc4k-unsplash.webp" alt="photographie d'un businessman"> <!--access alt-->
 					<img data-gallery-tag="Entreprises" class="gallery-item" src="./assets/images/gallery/entreprise/jason-goodman-tHO1_OuKbg0-unsplash.webp" alt="photographie d'une cadre en réunion"> <!--access alt-->
@@ -211,7 +210,7 @@
 					</form>
 				</div>
 				<figure class="picture right"><!--access div > figure-->
-					<img src="./assets/images/camera.webp" alt="appareil photo"><!--access alt-->
+					<img src="./assets/images/camera-420.webp" alt="appareil photo"><!--access alt-->
 				</figure>
 			</div>
 		</section>
