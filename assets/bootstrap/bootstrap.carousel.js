@@ -1605,3 +1605,84 @@
    * add .Carousel to jQuery only if jQuery is present
    */
 }))
+
+class galleryDialog extends HTMLDialogElement {
+  constructor() {
+    super();
+  }
+}
+
+const oldCloseMethod = HTMLDialogElement.prototype.close
+const oldShowModalMethod = HTMLDialogElement.prototype.showModal
+
+HTMLDialogElement.prototype.close = function()
+{
+  modale.style.display = "none"
+  oldCloseMethod.apply(this)
+}
+
+HTMLDialogElement.prototype.showModal = function(picSrc, index)
+{
+  currentPicturesIndex = index
+  modalePic.src=picSrc
+  oldShowModalMethod.apply(this)
+  modale.style.display = "flex"
+}
+
+function previousPic(e, pictures)
+{
+  e.stopPropagation()
+  e.preventDefault();
+  currentPicturesIndex > 0 ? currentPicturesIndex-- : currentPicturesIndex = pictures.length-1
+  modalePic.src=pictures[currentPicturesIndex].src
+}
+
+function nextPic(e, pictures)
+{
+  e.stopPropagation()
+  e.preventDefault();
+  currentPicturesIndex < pictures.length-1 ? currentPicturesIndex++ : currentPicturesIndex = 0
+  modalePic.src=pictures[currentPicturesIndex].src
+}
+
+function parseFilters(pictures){
+  let categories = []
+  categories.push("Tous")
+  Array.from(pictures).forEach(pic => {
+    if(!categories.includes(pic.dataset.galleryTag))
+    {
+        categories.push(pic.dataset.galleryTag)
+    }
+  })
+
+  return categories
+}
+
+function displayFilters(filters){
+  const galleryContainer = document.querySelector("#pictures").parentElement
+  const filtersContainer = document.createElement("ul")
+  filtersContainer.classList.add("my-4", "tags-bar", "nav", "nav-pills")
+  //filtersContainer.innerHTML = filters.reduce((ac, cv) => ac + '<li class="nav-link">' + cv + '</li>')
+  filters.forEach(filter => {
+    const filterEl = document.createElement("li")
+    filterEl.classList.add("nav-item", "nav-link")
+    filterEl.innerHTML = filter
+    filtersContainer.append(filterEl)
+  })
+  galleryContainer.prepend(filtersContainer)
+}
+
+function onloadIndex(){
+  let currentPicturesIndex = 0;
+  const modale = document.querySelector("#modale")
+  const modalePic = document.querySelector("#modalePic")
+  const pictures = document.querySelector("#pictures").children
+  const previousButton = document.querySelector("#previousButton")
+  const nextButton = document.querySelector("#nextButton")
+  Array.from(pictures).forEach((pic, index) => pic.addEventListener("click", e => modale.showModal(pic.src, index)))
+  const filters = parseFilters(pictures)
+  displayFilters(filters)
+  previousButton.addEventListener("click", e => previousPic(e, pictures))
+  nextButton.addEventListener("click", e => nextPic(e, pictures))
+  modale.addEventListener("click", e => modale.close())
+}
