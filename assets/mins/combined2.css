@@ -1153,7 +1153,7 @@ h4 {
 
 #gallery .nav {
   justify-content: center;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   width: 80%;
   max-width: 500px;
   margin: 0 auto;
@@ -1167,6 +1167,12 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.modalPic {
+  width: 100%;
+  max-width: 500px;
+  max-height: calc(100vh - 40px);
 }
 
 #modale {
