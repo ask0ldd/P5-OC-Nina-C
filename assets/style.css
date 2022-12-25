@@ -361,7 +361,6 @@ input[type="submit"] {
     flex: 1;
     padding-block: 1em;
     text-align: center;
-    border: 1px solid red;
     padding: 0 0; /* a propos reste sur une ligne */
   }
   .picture.left::before,
