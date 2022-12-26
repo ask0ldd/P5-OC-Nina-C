@@ -804,9 +804,11 @@ h4 {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #beb45a;
+  /*background-color: #beb45a;*/
+  background-color: #5e5a26;
   border-radius: 0;
 }
+
 .nav-pills .nav-link {
   color: #000;
   cursor: pointer;
