@@ -1139,12 +1139,19 @@ h4 {
   line-height: 1.25em; /* added */
 }
 
-.gallery {
-  width: 1320px;
+.gallery-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /*grid-auto-rows: 440px;*/
+}
+
+/*.gallery-container {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 440px;
-}
+}*/
 
 .title {
   text-align: center;
@@ -1189,6 +1196,7 @@ h4 {
   color: #000;
   cursor: pointer;
 }
+
 .item-column {
   position: relative;
   margin-bottom: 0 !important;
@@ -1202,7 +1210,8 @@ h4 {
 .gallery-item {
   /*position: absolute;*/
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
+  height: 440px;
   object-fit: cover;
   padding: 0.5em;
 }
@@ -1340,6 +1349,10 @@ input[type="submit"] {
   #about-me p {
     width: 100%;
   }
+  .gallery-item {
+    width: 100%;
+    height: 312px;
+  }
 }
 
 @media all and (max-width: 1000px) {
@@ -1398,6 +1411,16 @@ input[type="submit"] {
     right: 0;
     z-index: -1;
   }
+  .gallery-item {
+    width: 100%;
+    height: 300px;
+  }
+
+  .gallery-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media all and (max-width: 650px) {
@@ -1441,5 +1464,16 @@ input[type="submit"] {
   #about-me .about-me__introduction {
     /* added*/
     width: 100%;
+  }
+
+  .gallery-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item {
+    width: 100%;
+    height: 400px;
   }
 }
