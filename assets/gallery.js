@@ -84,7 +84,6 @@ function displayFilterButtons(filters){
   const galleryContainer = document.querySelector("#pictures").parentElement
   const filtersContainer = document.createElement("ul")
   filtersContainer.classList.add("my-4", "tags-bar", "nav", "nav-pills")
-  //filtersContainer.innerHTML = filters.reduce((ac, cv) => ac + '<li class="nav-link">' + cv + '</li>')
   filters.forEach(filter => {
     const filterEl = document.createElement("li")
     if(filter === activeFilter) filterEl.classList.add("active")
