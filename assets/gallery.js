@@ -21,6 +21,8 @@ class ModaleGallery
         this.nextButton = document.querySelector("#nextButton")
         this.previousButton.addEventListener("click", e => this.previousPic(e))
         this.nextButton.addEventListener("click", e => this.nextPic(e))
+
+        window.addEventListener('keydown', e => this.#keyboardListener(e))
     }
 
     addModalePic()
@@ -78,6 +80,24 @@ class ModaleGallery
         this.picsParentNode.parentElement.prepend(this.filtersContainer)
     }
 
+    #keyboardListener(e)
+    {
+        if(e.keyCode == 27)
+        {
+            return this.closeModale()
+        }
+
+        if(e.keyCode == 37)
+        {
+            return this.nextPic()
+        }
+
+        if(e.keyCode == 39)
+        {
+            return this.previousPic()
+        }
+    }
+
     addListenersToPics()
     {
         Array.from(this.picNodes).forEach((pic, index) => pic.addEventListener("click", e => this.showModale(pic.src, index)))
@@ -122,8 +142,11 @@ class ModaleGallery
 
     previousPic(e)
     {
-        e.stopPropagation()
-        e.preventDefault();
+        if(e)
+        {
+            e.stopPropagation()
+            e.preventDefault()
+        }
         do
         {
             this.currentPictureIndex > 0 ? this.currentPictureIndex-- : this.currentPictureIndex = this.picNodes.length-1
@@ -136,8 +159,11 @@ class ModaleGallery
 
     nextPic(e)
     {
-        e.stopPropagation()
-        e.preventDefault();
+        if(e)
+        {
+            e.stopPropagation()
+            e.preventDefault()
+        }
         do
         {
             this.currentPictureIndex < this.picNodes.length-1 ? this.currentPictureIndex++ : this.currentPictureIndex = 0
