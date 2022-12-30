@@ -88,12 +88,12 @@ class ModaleGallery
             return this.closeModale()
         }
 
-        if(e.keyCode == 37)
+        if(e.keyCode == 39)
         {
             return this.nextPic()
         }
 
-        if(e.keyCode == 39)
+        if(e.keyCode == 37)
         {
             return this.previousPic()
         }
