@@ -28,6 +28,7 @@ class ModaleGallery
     addModalePic()
     {
         const pic = document.createElement("img")
+        pic.setAttribute('alt','photographie dans la modale')
         pic.setAttribute('id','modalePic')
         pic.classList.add("modalPic")
         this.modale.prepend(pic)
