@@ -25,7 +25,7 @@ class ModaleGallery
         window.addEventListener('keydown', e => this.#keyboardListener(e))
     }
 
-    addModalePic()
+    addModalePic() // create a pic element into the dialog body
     {
         const pic = document.createElement("img")
         pic.setAttribute('alt','photographie dans la modale')
@@ -35,7 +35,7 @@ class ModaleGallery
         return pic
     }
 
-    #parseCategories(pictures) 
+    #parseCategories(pictures) // Get the filters name through the attribute data-gallery-tag + tous
     {
         let cat = []
         cat.push("Tous")
@@ -48,7 +48,7 @@ class ModaleGallery
         return cat
     }
 
-    picsFiltering()
+    picsFiltering() // display : none;  for the pictures that are not part of the active category
     {
         if (this.activeFilter==="Tous") {
           Array.from(this.picNodes).forEach(pic => pic.style.display="block")
@@ -57,13 +57,13 @@ class ModaleGallery
         Array.from(this.picNodes).forEach(pic => pic.dataset.galleryTag === this.activeFilter ? pic.style.display="block" : pic.style.display="none" )
     }
 
-    makeFilterButtonActive(selectedFilter)
+    makeFilterButtonActive(selectedFilter) // set the right background color behind the active filter name
     {
         Array.from(this.filtersContainer.children).forEach(fil => fil.classList.remove("active"))
         selectedFilter.classList.add("active")
     }
 
-    displayFilters()
+    displayFilters() // display the filters in their initial state : with "tous" being active
     {
         this.filtersContainer.classList.add("my-4", "tags-bar", "nav", "nav-pills")
         this.categories.forEach(filter => {
@@ -81,7 +81,7 @@ class ModaleGallery
         this.picsParentNode.parentElement.prepend(this.filtersContainer)
     }
 
-    #keyboardListener(e)
+    #keyboardListener(e) // keyboard navigation for the gallery > accessibility
     {
         if(e.keyCode == 27)
         {
@@ -99,7 +99,7 @@ class ModaleGallery
         }
     }
 
-    addListenersToPics()
+    addListenersToPics() // listeners handling the zooming on a specific pic
     {
         Array.from(this.picNodes).forEach((pic, index) => pic.addEventListener("click", e => this.showModale(pic.src, index)))
     }
@@ -124,7 +124,7 @@ class ModaleGallery
         }
     }
 
-    showModale(picSrc, index)
+    showModale(picSrc, index) // displaying the modale with the select pic
     {
         this.#scrollLock(true)
         console.log(picSrc)
@@ -141,7 +141,7 @@ class ModaleGallery
         this.#scrollLock(false)
     }
 
-    previousPic(e)
+    previousPic(e) // linked to previous button click / left arrow
     {
         if(e)
         {
@@ -158,7 +158,7 @@ class ModaleGallery
         this.modalePic.src=this.picNodes[this.currentPictureIndex].src
     }
 
-    nextPic(e)
+    nextPic(e) // linked to next button click / right arrow
     {
         if(e)
         {
@@ -176,6 +176,6 @@ class ModaleGallery
     }
 }
 
-function onloadIndex(){
+function onloadIndex(){ // instancing my object ModaleGallery
   const gallery = new ModaleGallery(document.querySelector("#modale"), document.querySelector("#pictures"))
 }
