@@ -1,4 +1,3 @@
-/*--Gallery--*/
 class ModaleGallery 
 {
     constructor(modale, picturesParentNode) 
